@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.aliyun.jtester</groupId>
+		<artifactId>jtester.parent</artifactId>
+		<version>2.0.2</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>jtester.spec</artifactId>
+	<packaging>jar</packaging>
+	<name>jtester jspec module</name>
+	<properties>
+		<skipTests>true</skipTests>
+	</properties>
+	<dependencies>
+		<!-- must jar -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun.jtester</groupId>
+			<artifactId>jtester.core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- must jar end -->
+
+		<!-- provider or test jar -->
+		<dependency>
+			<groupId>com.aliyun.jtester</groupId>
+			<artifactId>jtester.integrated</artifactId>
+			<version>${project.version}</version>
+			<scope>provider</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun.jtester</groupId>
+			<artifactId>jtester.junit</artifactId>
+			<version>${project.version}</version>
+			<scope>provider</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun.jtester</groupId>
+			<artifactId>jtester.testng</artifactId>
+			<version>${project.version}</version>
+			<scope>provider</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun.jtester</groupId>
+			<artifactId>jtester.fortest</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<scope>provider</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<scope>provider</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<scope>provider</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/test/testng</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
